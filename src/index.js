@@ -1,3 +1,5 @@
+import i18n from './i18n';
+
 
 export default function (app, options) {
     app.addRouteListener('course.modules', function () {
@@ -23,7 +25,7 @@ export default function (app, options) {
             }
             
             el.querySelector('.header-bar-left__buttons').insertAdjacentHTML('beforeend', `
-                <a class="btn btn-primary view_all_modules" href="#">View All Modules</a>
+                <a class="btn btn-primary view_all_modules" href="#">${i18n.t('view_all_modules')}</a>
             `);
             
             el.querySelector('.header-bar-left__buttons .view_all_modules').addEventListener('click', function () {

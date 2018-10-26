@@ -1,6 +1,6 @@
 {
   "name": "@ahsdile/canvas-lms-only-show-selected-module-plugin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Plugin for the Canvas LMS theme app that hides other modules when linked directly to module via URL hash",
   "keywords": ["Canvas LMS"],
   "license": "MIT",
@@ -8,8 +8,12 @@
   "repository": "https://github.com/ahsdile/canvas-lms-only-show-selected-module-plugin",
   "module": "src/index.js",
   "files": [
-    "src/index.js"
+    "src/index.js",
+    "src/i18n.js"
   ],
+  "dependencies": {
+    "i18next": "^11.6.0"
+  },
   "peerDependencies": {
     "@ahsdile/canvas-lms-app": "^0.4.0"
   }
