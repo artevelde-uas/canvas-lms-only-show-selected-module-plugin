@@ -11,10 +11,9 @@ export default function (app, options) {
         
         history.replaceState(null, document.title, location.pathname + location.hash.replace(/^#module_/, '/'));
         
-        window.scrollTo(0, 0);
-        
         app.addReadyListener('#context_modules', function (modules) {
             let selected = document.getElementById(moduleId);
+            let intervalID = setInterval(window.scrollTo, 500, 0, 0);
             
             modules.classList.add(styles.modules);
             selected.classList.add(styles.selected);
@@ -37,6 +36,10 @@ export default function (app, options) {
                     history.replaceState(null, document.title, location.pathname.replace(/\/\d+$/, ''));
                 });
             });
+            
+            setTimeout(function () {
+                clearInterval(intervalID);
+            }, 2000);
         });
     });
 }
