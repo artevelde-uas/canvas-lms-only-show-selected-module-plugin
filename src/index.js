@@ -11,6 +11,8 @@ export default function (app, options) {
         
         history.replaceState(null, document.title, location.pathname + location.hash.replace(/^#module_/, '/'));
         
+        window.scrollTo(0, 0);
+        
         app.addReadyListener('#context_modules', function (modules) {
             let selected = document.getElementById(moduleId);
             
