@@ -5,14 +5,14 @@ import styles from './index.css';
 
 export default function (app, options) {
     app.addRouteListener('course.modules', function () {
-        let moduleId = location.hash.replace(/^#/, 'context_');
+        let moduleId = window.location.hash.replace(/^#module_/, '');
         
-        if (moduleId === '') return;
+        if (location.hash === '') return;
         
-        history.replaceState(null, document.title, location.pathname + location.hash.replace(/^#module_/, '/'));
-        
+        history.replaceState(null, document.title, window.location.pathname + '/' + moduleId);
+
         app.addReadyListener('#context_modules', function (modules) {
-            let selected = document.getElementById(moduleId);
+            let selected = document.getElementById('context_module_' + moduleId);
             let intervalID = setInterval(window.scrollTo, 500, 0, 0);
             
             modules.classList.add(styles.modules);
