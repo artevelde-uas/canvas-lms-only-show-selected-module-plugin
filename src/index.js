@@ -1,36 +1,35 @@
 import i18n from './i18n';
 
+import styles from './index.css';
+
 
 export default function (app, options) {
     app.addRouteListener('course.modules', function () {
-        var anchors = [];
+        let moduleId = location.hash.replace(/^#/, 'context_');
         
-        if (window.location.hash === '') return;
+        if (moduleId === '') return;
         
-        app.addReadyListener('#context_modules', function (el) {
-            anchors = el.querySelectorAll(`.context_module > a:not(${window.location.hash})`);
+        app.addReadyListener('#context_modules', function (modules) {
+            let selected = document.getElementById(moduleId);
             
-            anchors.forEach(function (anchor) {
-                anchor.parentElement.classList.add('hidden');
-            });
-        });
-        
-        app.addReadyListener('#content > .header-bar', function (el) {
-            if (el.querySelector('.header-bar-left') === null) {
-                el.insertAdjacentHTML('afterbegin', `
-                    <div class="header-bar-left header-bar__module-layout">
-                        <div class="header-bar-left__buttons"></div>
-                    </div>
+            modules.classList.add(styles.modules);
+            selected.classList.add(styles.selected);
+            
+            app.addReadyListener('#content > .header-bar', function (header) {
+                if (header.querySelector('.header-bar-left') === null) {
+                    header.insertAdjacentHTML('afterbegin', `
+                        <div class="header-bar-left header-bar__module-layout">
+                            <div class="header-bar-left__buttons"></div>
+                        </div>
+                    `);
+                }
+                
+                header.querySelector('.header-bar-left__buttons').insertAdjacentHTML('beforeend', `
+                    <a id="view_all_modules" class="btn btn-primary" href="#">${i18n.t('view_all_modules')}</a>
                 `);
-            }
-            
-            el.querySelector('.header-bar-left__buttons').insertAdjacentHTML('beforeend', `
-                <a class="btn btn-primary view_all_modules" href="#">${i18n.t('view_all_modules')}</a>
-            `);
-            
-            el.querySelector('.header-bar-left__buttons .view_all_modules').addEventListener('click', function () {
-                anchors.forEach(function (anchor) {
-                    anchor.parentElement.classList.remove('hidden');
+                
+                header.querySelector('.header-bar-left__buttons #view_all_modules').addEventListener('click', function () {
+                    modules.classList.remove(styles.modules);
                     history.replaceState(null, document.title, location.pathname);
                 });
             });

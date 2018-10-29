@@ -9,6 +9,7 @@
   "module": "src/index.js",
   "files": [
     "src/index.js",
+    "src/index.css",
     "src/i18n.js"
   ],
   "dependencies": {

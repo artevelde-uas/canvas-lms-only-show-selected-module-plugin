@@ -1,0 +1,9 @@
+
+.modules > * {
+    display: none;
+}
+
+.modules > .selected {
+    display: block;
+    border-bottom-style: none;
+}
