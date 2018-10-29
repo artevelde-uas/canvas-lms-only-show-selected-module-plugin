@@ -9,6 +9,8 @@ export default function (app, options) {
         
         if (moduleId === '') return;
         
+        history.replaceState(null, document.title, location.pathname + location.hash.replace(/^#module_/, '/'));
+        
         app.addReadyListener('#context_modules', function (modules) {
             let selected = document.getElementById(moduleId);
             
@@ -30,7 +32,7 @@ export default function (app, options) {
                 
                 header.querySelector('.header-bar-left__buttons #view_all_modules').addEventListener('click', function () {
                     modules.classList.remove(styles.modules);
-                    history.replaceState(null, document.title, location.pathname);
+                    history.replaceState(null, document.title, location.pathname.replace(/\/\d+$/, ''));
                 });
             });
         });
