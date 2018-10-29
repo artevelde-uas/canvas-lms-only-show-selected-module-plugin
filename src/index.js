@@ -25,7 +25,7 @@ export default function (app, options) {
                 }
                 
                 header.querySelector('.header-bar-left__buttons').insertAdjacentHTML('beforeend', `
-                    <a id="view_all_modules" class="btn btn-primary" href="#">${i18n.t('view_all_modules')}</a>
+                    <a id="view_all_modules" class="btn btn-primary">${i18n.t('view_all_modules')}</a>
                 `);
                 
                 header.querySelector('.header-bar-left__buttons #view_all_modules').addEventListener('click', function () {
