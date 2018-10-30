@@ -31,6 +31,7 @@ export default function (app, options) {
             el.querySelector('.header-bar-left__buttons .view_all_modules').addEventListener('click', function () {
                 anchors.forEach(function (anchor) {
                     anchor.parentElement.classList.remove('hidden');
+                    history.replaceState(null, document.title, location.pathname);
                 });
             });
         });
