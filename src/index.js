@@ -58,6 +58,12 @@ export default function (app, options) {
                     once: true
                 });
             });
+            
+            window.addEventListener('mousedown', function scrollBarHandler(e) {
+                if (e.target === document.documentElement && e.clientX >= document.documentElement.offsetWidth) {
+                    window.removeEventListener('mousedown', scrollBarHandler);
+                }
+            }, true);
         });
     });
 }
