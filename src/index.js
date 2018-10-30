@@ -13,7 +13,7 @@ export default function (app, options) {
 
         app.addReadyListener('#context_modules', function (modules) {
             let selected = document.getElementById('context_module_' + moduleId);
-            let intervalID = setInterval(window.scrollTo, 500, 0, 0);
+            let intervalID = setInterval(window.scrollTo, 100, 0, 0);
             
             modules.classList.add(styles.modules);
             selected.classList.add(styles.selected);
@@ -39,7 +39,7 @@ export default function (app, options) {
             
             setTimeout(function () {
                 clearInterval(intervalID);
-            }, 2000);
+            }, 10000);
         });
     });
 }
