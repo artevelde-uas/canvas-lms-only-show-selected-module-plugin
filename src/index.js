@@ -46,7 +46,7 @@ export default function (app, options) {
                     modules.classList.remove(styles.modules);
                     history.replaceState(null, document.title, location.pathname.replace(/\/\d+$/, ''));
                     viewAllButton.parentNode.removeChild(viewAllButton);
-                    addButton.classList.remove('disabled');
+                    addButton && addButton.classList.remove('disabled');
                 });
             });
             
