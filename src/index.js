@@ -23,6 +23,8 @@ export default function (app, options) {
             selected.classList.add(styles.selected);
             
             app.addReadyListener('#content > .header-bar', function (header) {
+                let viewAllButton;
+                
                 if (header.querySelector('.header-bar-left') === null) {
                     header.insertAdjacentHTML('afterbegin', `
                         <div class="header-bar-left header-bar__module-layout">
@@ -35,9 +37,12 @@ export default function (app, options) {
                     <a id="view_all_modules" class="btn btn-primary">${i18n.t('view_all_modules')}</a>
                 `);
                 
-                header.querySelector('.header-bar-left__buttons #view_all_modules').addEventListener('click', function () {
+                viewAllButton = header.querySelector('.header-bar-left__buttons #view_all_modules')
+                
+                viewAllButton.addEventListener('click', function () {
                     modules.classList.remove(styles.modules);
                     history.replaceState(null, document.title, location.pathname.replace(/\/\d+$/, ''));
+                    viewAllButton.parentNode.removeChild(viewAllButton);
                 });
             });
             
