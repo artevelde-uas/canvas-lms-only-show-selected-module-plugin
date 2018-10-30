@@ -15,6 +15,10 @@ export default function (app, options) {
             let selected = document.getElementById('context_module_' + moduleId);
             let intervalID = setInterval(window.scrollTo, 100, 0, 0);
             
+            function clear() {
+                clearInterval(intervalID);
+            }
+            
             modules.classList.add(styles.modules);
             selected.classList.add(styles.selected);
             
@@ -37,9 +41,14 @@ export default function (app, options) {
                 });
             });
             
-            setTimeout(function () {
-                clearInterval(intervalID);
-            }, 10000);
+            setTimeout(clear, 10000);
+            
+            ['wheel', 'keydown', 'touchstart'].forEach(function (name) {
+                window.addEventListener(name, clear, {
+                    capture: true,
+                    once: true
+                });
+            });
         });
     });
 }
