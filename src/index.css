@@ -7,3 +7,7 @@
     display: block;
     border-bottom-style: none;
 }
+
+.modules > .selected :global(.sortable-handle) {
+    display: none;
+}
