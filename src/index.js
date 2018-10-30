@@ -24,6 +24,9 @@ export default function (app, options) {
             
             app.addReadyListener('#content > .header-bar', function (header) {
                 let viewAllButton;
+                let addButton = document.querySelector('.header-bar .add_module_link');
+                
+                addButton.classList.add('disabled');
                 
                 if (header.querySelector('.header-bar-left') === null) {
                     header.insertAdjacentHTML('afterbegin', `
@@ -43,6 +46,7 @@ export default function (app, options) {
                     modules.classList.remove(styles.modules);
                     history.replaceState(null, document.title, location.pathname.replace(/\/\d+$/, ''));
                     viewAllButton.parentNode.removeChild(viewAllButton);
+                    addButton.classList.remove('disabled');
                 });
             });
             
