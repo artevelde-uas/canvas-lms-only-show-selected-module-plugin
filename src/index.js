@@ -26,7 +26,7 @@ export default function (app, options) {
                 let viewAllButton;
                 let addButton = document.querySelector('.header-bar .add_module_link');
                 
-                addButton.classList.add('disabled');
+                addButton && addButton.classList.add('disabled');
                 
                 if (header.querySelector('.header-bar-left') === null) {
                     header.insertAdjacentHTML('afterbegin', `
