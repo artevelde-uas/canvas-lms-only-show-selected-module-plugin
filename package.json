@@ -1,7 +1,7 @@
 {
   "name": "@artevelde-uas/canvas-lms-only-show-selected-module-plugin",
   "version": "0.4.3",
-  "description": "Plugin for the Canvas LMS theme app that hides other modules when linked directly to module via URL hash",
+  "description": "Hides other modules when linked directly to module via URL hash",
   "keywords": [
     "Canvas LMS"
   ],
