@@ -1,54 +1,45 @@
-import i18next from 'i18next';
+import { addTranslations, getTranslator } from '@artevelde-uas/canvas-lms-app/services/i18n';
 
 
-export default i18next.createInstance().init({
-    lng: document.documentElement.lang,
-    fallbackLng: 'en',
-    resources: {
-        "en": {
-            "translation": {
-                "view_all_modules": "View All Modules"
-            }
-        },
-        "nl": {
-            "translation": {
-                "view_all_modules": "Alle modules weergeven"
-            }
-        },
-        "fr": {
-            "translation": {
-                "view_all_modules": "Afficher toutes les modules"
-            }
-        },
-        "de": {
-            "translation": {
-                "view_all_modules": "Alle Module anzeigen"
-            }
-        },
-        "es": {
-            "translation": {
-                "view_all_modules": "Ver todas las módulos"
-            }
-        },
-        "pt": {
-            "translation": {
-                "view_all_modules": "Ver todas as módulos"
-            }
-        },
-        "it": {
-            "translation": {
-                "view_all_modules": "Visualizza tutte le moduli"
-            }
-        },
-        "zh": {
-            "translation": {
-                "view_all_modules": "查看所有单元"
-            }
-        },
-        "jp": {
-            "translation": {
-                "view_all_modules": "すべてのモジュールを表示"
-            }
-        }
+// Build the translations object
+const translations = {
+    "en": {
+        "view_all_modules": "View All Modules"
+    },
+    "nl": {
+        "view_all_modules": "Alle modules weergeven"
+    },
+    "fr": {
+        "view_all_modules": "Afficher toutes les modules"
+    },
+    "de": {
+        "view_all_modules": "Alle Module anzeigen"
+    },
+    "es": {
+        "view_all_modules": "Ver todas las módulos"
+    },
+    "pt": {
+        "view_all_modules": "Ver todas as módulos"
+    },
+    "it": {
+        "view_all_modules": "Visualizza tutte le moduli"
+    },
+    "zh": {
+        "view_all_modules": "查看所有单元"
+    },
+    "jp": {
+        "view_all_modules": "すべてのモジュールを表示"
     }
-});
+};
+
+// Get the namespace from the package
+const namespace = require('../package.json').name;
+
+// Add all the translation files to the namespace
+addTranslations(namespace, translations);
+
+// Get the default translator for the namespace
+const translator = getTranslator(namespace);
+
+
+export default translator;
