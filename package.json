@@ -10,9 +10,7 @@
   "repository": "https://github.com/artevelde-uas/canvas-lms-only-show-selected-module-plugin",
   "module": "src/index.js",
   "files": [
-    "src/index.js",
-    "src/index.css",
-    "src/i18n.js"
+    "src/"
   ],
   "peerDependencies": {
     "@artevelde-uas/canvas-lms-app": "^1.0.0"
