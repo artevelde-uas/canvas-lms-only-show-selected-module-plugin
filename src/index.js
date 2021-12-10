@@ -10,7 +10,7 @@ export default function () {
 
         if (location.hash === '') return;
 
-        history.replaceState(null, document.title, window.location.pathname + '/' + moduleId);
+        window.history.replaceState(null, document.title, window.location.pathname + '/' + moduleId);
 
         dom.onElementReady('#context_modules').then(modules => {
             const selected = document.getElementById('context_module_' + moduleId);
