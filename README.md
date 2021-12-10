@@ -6,11 +6,11 @@ Plugin for the [Canvas LMS theme app](https://github.com/ahsdile/canvas-lms-app)
 
 Using NPM:
 
-    npm install @ahsdile/canvas-lms-only-show-selected-module-plugin
+    npm install @artevelde-uas/canvas-lms-only-show-selected-module-plugin
 
 Using Yarn:
 
-    yarn add @ahsdile/canvas-lms-only-show-selected-module-plugin
+    yarn add @artevelde-uas/canvas-lms-only-show-selected-module-plugin
 
 ## Usage
 
@@ -18,7 +18,7 @@ Just import the plug-in and add it to the Canvas app:
 
 ```javascript
 import canvas from '@ahsdile/canvas-lms-app';
-import onlyShowSelectedModulePlugin from '@ahsdile/canvas-lms-only-show-selected-module-plugin';
+import onlyShowSelectedModulePlugin from '@artevelde-uas/canvas-lms-only-show-selected-module-plugin';
 
 canvas.addPlugin(onlyShowSelectedModulePlugin);
 
