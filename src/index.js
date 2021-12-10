@@ -6,15 +6,15 @@ import styles from './index.module.css';
 
 export default function () {
     router.onRoute('courses.modules', function () {
-        let moduleId = window.location.hash.replace(/^#module_/, '');
+        const moduleId = window.location.hash.replace(/^#module_/, '');
 
         if (location.hash === '') return;
 
         history.replaceState(null, document.title, window.location.pathname + '/' + moduleId);
 
         dom.onElementReady('#context_modules').then(modules => {
-            let selected = document.getElementById('context_module_' + moduleId);
-            let intervalID = setInterval(window.scrollTo, 100, 0, 0);
+            const selected = document.getElementById('context_module_' + moduleId);
+            const intervalID = setInterval(window.scrollTo, 100, 0, 0);
 
             function clear() {
                 clearInterval(intervalID);
@@ -24,8 +24,7 @@ export default function () {
             selected.classList.add(styles.selected);
 
             dom.onElementReady('#content > .header-bar').then(header => {
-                let viewAllButton;
-                let addButton = document.querySelector('.header-bar .add_module_link');
+                const addButton = document.querySelector('.header-bar .add_module_link');
 
                 addButton && addButton.classList.add('disabled');
 
@@ -41,7 +40,7 @@ export default function () {
                     <a id="view_all_modules" class="btn btn-primary">${__('view_all_modules')}</a>
                 `);
 
-                viewAllButton = header.querySelector('.header-bar-left__buttons #view_all_modules')
+                const viewAllButton = header.querySelector('.header-bar-left__buttons #view_all_modules')
 
                 viewAllButton.addEventListener('click', function () {
                     modules.classList.remove(styles.modules);
