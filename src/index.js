@@ -1,5 +1,5 @@
 import { router, dom } from '@artevelde-uas/canvas-lms-app';
-import i18n from './i18n';
+import __ from './i18n';
 
 import styles from './index.css';
 
@@ -38,7 +38,7 @@ export default function () {
                 }
 
                 header.querySelector('.header-bar-left__buttons').insertAdjacentHTML('beforeend', `
-                    <a id="view_all_modules" class="btn btn-primary">${i18n.t('view_all_modules')}</a>
+                    <a id="view_all_modules" class="btn btn-primary">${__('view_all_modules')}</a>
                 `);
 
                 viewAllButton = header.querySelector('.header-bar-left__buttons #view_all_modules')

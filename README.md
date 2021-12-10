@@ -25,3 +25,8 @@ addPlugin(onlyShowSelectedModulePlugin);
 
 run();
 ```
+
+## Translations
+
+The plug-in is currently translated in the following languages: English, Dutch, French, German, Spanish, Italian,
+Chinese and Japanese. (Some of these are done with a translation tool so they may not be accurate.)
