@@ -18,6 +18,6 @@
     "i18next": "^11.6.0"
   },
   "peerDependencies": {
-    "@ahsdile/canvas-lms-app": "^0.4.0"
+    "@artevelde-uas/canvas-lms-app": "^1.0.0"
   }
 }
