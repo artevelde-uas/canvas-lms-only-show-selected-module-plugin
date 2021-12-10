@@ -10,7 +10,7 @@ const translations = {
         "view_all_modules": "Alle modules weergeven"
     },
     "fr": {
-        "view_all_modules": "Afficher toutes les modules"
+        "view_all_modules": "Afficher tous les modules"
     },
     "de": {
         "view_all_modules": "Alle Module anzeigen"
