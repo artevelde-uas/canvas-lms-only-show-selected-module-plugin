@@ -19,9 +19,9 @@ export default function () {
             const intervalID = setInterval(window.scrollTo, 100, 0, 0);
 
             // Get the selected module
-            const selected = document.getElementById('context_module_' + moduleId);
+            let selectedModule = document.getElementById('context_module_' + moduleId);
 
-            selected.classList.add(styles.selected);
+            selectedModule.classList.add(styles.selected);
             modules.classList.add(styles.modules);
 
             dom.onElementReady('#content > .header-bar').then(header => {
@@ -41,12 +41,42 @@ export default function () {
                     `);
                 }
 
-                // Append the 'View All Modules' button
-                header.querySelector('.header-bar-left__buttons').insertAdjacentHTML('beforeend', `
+                const leftButtonBar = header.querySelector('.header-bar-left__buttons')
+
+                // Append the module buttons
+                leftButtonBar.insertAdjacentHTML('beforeend', `
+                    <a id="${styles.viewPreviousModule}" class="btn">&lt;</a>
+                    <a id="${styles.viewNextModule}" class="btn">&gt;</a>
                     <a id="${styles.viewAllModules}" class="btn btn-primary">${__('view_all_modules')}</a>
                 `);
 
+                const viewPreviousButton = document.getElementById(styles.viewPreviousModule)
+                const viewNextButton = document.getElementById(styles.viewNextModule)
                 const viewAllButton = document.getElementById(styles.viewAllModules)
+
+                // Show the previous module when the 'View Previous Module' button is clicked
+                viewPreviousButton.addEventListener('click', function () {
+                    const previousModule = selectedModule.previousElementSibling;
+
+                    if (previousModule === null) return;
+
+                    selectedModule.classList.remove(styles.selected);
+                    previousModule.classList.add(styles.selected);
+
+                    selectedModule = previousModule;
+                });
+
+                // Show the previous module when the 'View Previous Module' button is clicked
+                viewNextButton.addEventListener('click', function () {
+                    const nextModule = selectedModule.nextElementSibling;
+
+                    if (nextModule === null) return;
+
+                    selectedModule.classList.remove(styles.selected);
+                    nextModule.classList.add(styles.selected);
+
+                    selectedModule = nextModule;
+                });
 
                 // Reset the page when the 'View All Modules' button is clicked
                 viewAllButton.addEventListener('click', function () {
@@ -55,8 +85,10 @@ export default function () {
                     // Remove the module ID from the URL
                     history.replaceState(null, document.title, location.pathname.replace(/\/\d+$/, ''));
 
-                    // Remove the 'View All Modules' button
-                    viewAllButton.parentNode.removeChild(viewAllButton);
+                    // Remove the module buttons
+                    leftButtonBar.removeChild(viewPreviousButton);
+                    leftButtonBar.removeChild(viewNextButton);
+                    leftButtonBar.removeChild(viewAllButton);
 
                     // Re-enable the '+ Module' button
                     addButton && addButton.classList.remove('disabled');
