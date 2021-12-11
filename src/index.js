@@ -15,15 +15,14 @@ export default function () {
         window.history.replaceState(null, document.title, window.location.pathname + '/' + moduleId);
 
         dom.onElementReady('#context_modules').then(modules => {
-            // Get the selected module
-            const selected = document.getElementById('context_module_' + moduleId);
-
             // Keep scrolling window to top to override Canvas' behavior
             const intervalID = setInterval(window.scrollTo, 100, 0, 0);
 
+            // Get the selected module
+            const selected = document.getElementById('context_module_' + moduleId);
 
-            modules.classList.add(styles.modules);
             selected.classList.add(styles.selected);
+            modules.classList.add(styles.modules);
 
             dom.onElementReady('#content > .header-bar').then(header => {
                 const addButton = document.querySelector('.header-bar .add_module_link');
