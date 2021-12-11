@@ -21,12 +21,6 @@ export default function () {
             // Keep scrolling window to top to override Canvas' behavior
             const intervalID = setInterval(window.scrollTo, 100, 0, 0);
 
-            /**
-             * Clear the scroll to top interval
-             */
-            function clear() {
-                clearInterval(intervalID);
-            }
 
             modules.classList.add(styles.modules);
             selected.classList.add(styles.selected);
@@ -67,6 +61,13 @@ export default function () {
                     addButton && addButton.classList.remove('disabled');
                 });
             });
+
+            /**
+             * Clear the scroll to top interval
+             */
+            function clear() {
+                clearInterval(intervalID);
+            }
 
             // Stop scrolling to top after ten seconds
             setTimeout(clear, 10000);
