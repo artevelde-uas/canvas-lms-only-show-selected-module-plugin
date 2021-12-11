@@ -43,10 +43,10 @@ export default function () {
 
                 // Append the 'View All Modules' button
                 header.querySelector('.header-bar-left__buttons').insertAdjacentHTML('beforeend', `
-                    <a id="view_all_modules" class="btn btn-primary">${__('view_all_modules')}</a>
+                    <a id="${styles.viewAllModules}" class="btn btn-primary">${__('view_all_modules')}</a>
                 `);
 
-                const viewAllButton = header.querySelector('.header-bar-left__buttons #view_all_modules')
+                const viewAllButton = document.getElementById(styles.viewAllModules)
 
                 // Reset the page when the 'View All Modules' button is clicked
                 viewAllButton.addEventListener('click', function () {
