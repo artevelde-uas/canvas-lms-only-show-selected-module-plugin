@@ -28,7 +28,9 @@ export default function () {
                 const addButton = document.querySelector('.header-bar .add_module_link');
 
                 // Disable the '+ Module' button
-                addButton && addButton.classList.add('disabled');
+                if (addButton !== null) {
+                    addButton.classList.add('disabled');
+                }
 
                 // Inject the left button container if it does not exist yet
                 if (header.querySelector('.header-bar-left') === null) {
