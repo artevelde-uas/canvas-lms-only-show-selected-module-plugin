@@ -7,7 +7,7 @@ import styles from './index.module.css';
 export default function () {
     router.onRoute('courses.modules', function () {
         // Get the module ID from the URL hash
-        const moduleId = window.location.hash.replace(/^#module_/, '');
+        let moduleId = window.location.hash.replace(/^#module_/, '');
 
         if (location.hash === '') return;
 
@@ -60,10 +60,17 @@ export default function () {
 
                     if (previousModule === null) return;
 
+                    // Show the previous module
                     selectedModule.classList.remove(styles.selected);
                     previousModule.classList.add(styles.selected);
 
+                    // Set the previous module as the selected one
                     selectedModule = previousModule;
+                    moduleId = selectedModule.querySelector(':scope > .header').id;
+
+                    // Replace the module ID in the URL with the new one
+                    window.history.replaceState(null, document.title, moduleId);
+
                 });
 
                 // Show the previous module when the 'View Previous Module' button is clicked
@@ -71,11 +78,17 @@ export default function () {
                     const nextModule = selectedModule.nextElementSibling;
 
                     if (nextModule === null) return;
-
+                    
+                    // Show the next module
                     selectedModule.classList.remove(styles.selected);
                     nextModule.classList.add(styles.selected);
 
+                    // Set the previous module as the selected one
                     selectedModule = nextModule;
+                    moduleId = selectedModule.querySelector(':scope > .header').id;
+
+                    // Replace the module ID in the URL with the new one
+                    window.history.replaceState(null, document.title, moduleId);
                 });
 
                 // Reset the page when the 'View All Modules' button is clicked
