@@ -45,8 +45,14 @@ export default function () {
 
                 // Append the module buttons
                 leftButtonBar.insertAdjacentHTML('beforeend', `
-                    <a id="${styles.viewPreviousModule}" class="btn">&lt;</a>
-                    <a id="${styles.viewNextModule}" class="btn">&gt;</a>
+                    <a id="${styles.viewPreviousModule}" class="btn">
+                        <i class="icon-mini-arrow-left"></i>
+                        ${__('previous')}
+                        </a>
+                        <a id="${styles.viewNextModule}" class="btn">
+                        ${__('next')}
+                        <i class="icon-mini-arrow-right"></i>
+                    </a>
                     <a id="${styles.viewAllModules}" class="btn btn-primary">${__('view_all_modules')}</a>
                 `);
 
@@ -78,7 +84,7 @@ export default function () {
                     const nextModule = selectedModule.nextElementSibling;
 
                     if (nextModule === null) return;
-                    
+
                     // Show the next module
                     selectedModule.classList.remove(styles.selected);
                     nextModule.classList.add(styles.selected);
