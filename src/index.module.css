@@ -3,15 +3,19 @@
 #view-all-modules {
 }
 
-.modules > :global(.context_module) {
-  display: none;
-
-  &.selected {
-    display: block;
-    border-bottom-style: none;
-
-    & > :global(.sortable-handle) {
+.only-show-selected-module {
+  & :global(#context_modules) {
+    &.selected > :global(.context_module) {
       display: none;
+
+      &.selected {
+        display: revert;
+        border-bottom-style: none;
+
+        & > :global(.sortable-handle) {
+          display: none;
+        }
+      }
     }
   }
 }

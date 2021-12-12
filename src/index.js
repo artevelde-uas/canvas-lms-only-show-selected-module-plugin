@@ -11,6 +11,9 @@ export default function () {
 
         if (location.hash === '') return;
 
+        // Set main class on body
+        document.body.classList.add(styles.onlyShowSelectedModule);
+            
         // Replace the module ID in the URL hash with slash notation
         window.history.replaceState(null, document.title, window.location.pathname + '/' + moduleId);
 
@@ -21,8 +24,8 @@ export default function () {
             // Get the selected module
             let selectedModule = document.getElementById('context_module_' + moduleId);
 
+            modules.classList.add(styles.selected);
             selectedModule.classList.add(styles.selected);
-            modules.classList.add(styles.modules);
 
             dom.onElementReady('#content > .header-bar').then(header => {
                 const addButton = document.querySelector('.header-bar .add_module_link');
@@ -99,7 +102,7 @@ export default function () {
 
                 // Reset the page when the 'View All Modules' button is clicked
                 viewAllButton.addEventListener('click', function () {
-                    modules.classList.remove(styles.modules);
+                    modules.classList.remove(styles.selected);
 
                     // Remove the module ID from the URL
                     history.replaceState(null, document.title, location.pathname.replace(/\/\d+$/, ''));
