@@ -3,12 +3,10 @@
 #view-all-modules {
 }
 
-.modules {
-  & > * {
-    display: none;
-  }
+.modules > :global(.context_module) {
+  display: none;
 
-  & > .selected {
+  &.selected {
     display: block;
     border-bottom-style: none;
 
