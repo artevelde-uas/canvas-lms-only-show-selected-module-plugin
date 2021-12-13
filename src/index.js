@@ -67,7 +67,7 @@ export default function () {
                 // Disable the module buttons if needed
                 const previousModule = selectedModule.previousElementSibling;
                 const nextModule = selectedModule.nextElementSibling;
-                
+
                 viewPreviousButton.toggleAttribute('disabled', (previousModule === null));
                 viewNextButton.toggleAttribute('disabled', (nextModule === null));
                 viewAllButton.toggleAttribute('disabled', (previousModule === null && nextModule === null));
@@ -86,6 +86,7 @@ export default function () {
             }
 
             function showAllModules() {
+                // Unhide the selected module
                 modules.classList.remove(styles.selected);
 
                 // Hide the previously selected module
@@ -130,8 +131,8 @@ export default function () {
             viewAllButton.addEventListener('click', showAllModules);
 
             dom.onElementAdded('.context_module', module => {
+                // Add 'Only show this module' link
                 module.querySelectorAll('.ig-header-title').forEach(title => {
-                    // 
                     title.insertAdjacentHTML('beforeend', `
                         <a class="${styles.selectModule}">
                             [${__('only_show_this_module')}]
@@ -158,15 +159,20 @@ export default function () {
             });
 
             modules.addEventListener('click', event => {
+                // Only detect clicks on 'Only show this module' links
                 if (!event.target.classList.contains(styles.selectModule)) return;
 
                 // Prevent module collapse
                 event.stopPropagation();
 
+                // Get module ID
                 const moduleId = event.target.closest('.context_module').id;
+
+                // Set clicked module as 'selected'
                 setSelectedModule(moduleId);
             }, { capture: true });
 
+            // If a hash is in the URL then this is the first run and some initialization needs to be done
             if (location.hash !== '') {
                 // Get the module ID from the URL hash
                 const moduleId = window.location.hash.replace(/^#module_/, '');

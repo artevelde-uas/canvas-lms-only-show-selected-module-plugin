@@ -6,28 +6,34 @@
 .only-show-selected-module {
   & :global(#context_modules) {
     &.selected > :global(.context_module) {
+      /* Hide other modules when one is selected */
       display: none !important;
 
       &.selected {
+        /* Only show selected module */
         display: revert !important;
         border-bottom-style: none;
       }
 
+      /* Remove sortable handle when module is selected */
       & :global(.header > .sortable-handle) {
-          display: none;
-        }
+        display: none;
       }
+    }
 
+    /* Don't show new modules when still empty */
     & > :global(#context_module_new) {
       display: none !important;
     }
 
+    /* Hide the 'Only show this module' button ... */
     & .select-module {
       display: none;
       line-height: 0;
       font-size: 0.75em;
     }
 
+    /* ... and show when header is hovered */
     &:not(.selected) :global(.ig-header):hover .select-module {
       display: revert;
     }
