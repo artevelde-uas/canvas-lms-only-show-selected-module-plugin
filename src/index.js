@@ -81,7 +81,7 @@ export default function () {
 
                 // Disable the 'Expand/Collapse All' button
                 if (expandCollapseAllButton !== null) {
-                    expandCollapseAllButton.classList.toggle('disabled', true);
+                    expandCollapseAllButton.classList.add('disabled');
                 }
             }
 
@@ -108,7 +108,7 @@ export default function () {
 
                 // Re-enable the 'Expand/Collapse All' button
                 if (expandCollapseAllButton !== null) {
-                    expandCollapseAllButton.classList.toggle('disabled', false);
+                    expandCollapseAllButton.classList.remove('disabled');
                 }
             }
 
