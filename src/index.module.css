@@ -6,16 +6,20 @@
 .only-show-selected-module {
   & :global(#context_modules) {
     &.selected > :global(.context_module) {
-      display: none;
+      display: none !important;
 
       &.selected {
-        display: revert;
+        display: revert !important;
         border-bottom-style: none;
 
         & > :global(.sortable-handle) {
           display: none;
         }
       }
+    }
+
+    & > :global(#context_module_new) {
+      display: none !important;
     }
 
     & .select-module {

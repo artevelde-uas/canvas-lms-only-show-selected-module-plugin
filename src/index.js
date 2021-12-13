@@ -83,11 +83,6 @@ export default function () {
                 if (expandCollapseAllButton !== null) {
                     expandCollapseAllButton.classList.toggle('disabled', true);
                 }
-
-                // Disable the '+ Module' button
-                if (addButton !== null) {
-                    addButton.classList.toggle('disabled', true);
-                }
             }
 
             function showAllModules() {
@@ -104,11 +99,6 @@ export default function () {
                 // Re-enable the 'Expand/Collapse All' button
                 if (expandCollapseAllButton !== null) {
                     expandCollapseAllButton.classList.toggle('disabled', false);
-                }
-
-                // Re-enable the '+ Module' button
-                if (addButton !== null) {
-                    addButton.classList.toggle('disabled', false);
                 }
             }
 
@@ -138,6 +128,15 @@ export default function () {
                         </a>
                     `);
                 });
+
+                // Detect if a new module was created
+                if (selectedModule !== null && module.id.match(/^context_module_new$/) !== null) {
+                    // Select module when the ID attribute is set
+                    dom.onAttributeChange(module, setSelectedModule, {
+                        once: true,
+                        filter: ['id']
+                    });
+                }
             });
 
             modules.addEventListener('click', event => {
