@@ -25,6 +25,7 @@ export default function () {
             }
 
             const leftButtonBar = header.querySelector('.header-bar-left__buttons')
+            const expandCollapseAllButton = document.getElementById('expand_collapse_all');
             const addButton = document.querySelector('.header-bar .add_module_link');
 
             // Append the module buttons
@@ -60,19 +61,25 @@ export default function () {
                 // Replace the module ID in the URL with the new one
                 const moduleId = contextModuleId.replace(/^context_module_/, '');
                 const url = location.pathname.replace(/\/modules(\/\d+)?$/, '/modules/' + moduleId);
+
                 window.history.replaceState(null, null, url);
 
+                // Disable the module buttons if needed
                 const previousModule = selectedModule.previousElementSibling;
                 const nextModule = selectedModule.nextElementSibling;
-
-                // Disable the module buttons if needed
+                
                 viewPreviousButton.toggleAttribute('disabled', (previousModule === null));
                 viewNextButton.toggleAttribute('disabled', (nextModule === null));
                 viewAllButton.toggleAttribute('disabled', (previousModule === null && nextModule === null));
 
+                // Disable the 'Expand/Collapse All' button
+                if (expandCollapseAllButton !== null) {
+                    expandCollapseAllButton.classList.toggle('disabled', true);
+                }
+
                 // Disable the '+ Module' button
                 if (addButton !== null) {
-                    addButton.classList.add('disabled');
+                    addButton.classList.toggle('disabled', true);
                 }
             }
 
@@ -87,10 +94,14 @@ export default function () {
                 viewNextButton.toggleAttribute('disabled', true);
                 viewAllButton.toggleAttribute('disabled', true);
 
+                // Re-enable the 'Expand/Collapse All' button
+                if (expandCollapseAllButton !== null) {
+                    expandCollapseAllButton.classList.toggle('disabled', false);
+                }
 
                 // Re-enable the '+ Module' button
                 if (addButton !== null) {
-                    addButton.classList.remove('disabled');
+                    addButton.classList.toggle('disabled', false);
                 }
             }
 
