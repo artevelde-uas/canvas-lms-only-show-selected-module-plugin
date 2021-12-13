@@ -17,5 +17,15 @@
         }
       }
     }
+
+    & .select-module {
+      display: none;
+      line-height: 0;
+      font-size: 0.75em;
+    }
+
+    &:not(.selected) :global(.ig-header):hover .select-module {
+      display: revert;
+    }
   }
 }
