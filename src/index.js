@@ -139,6 +139,14 @@ export default function () {
                 }
             });
 
+            // Show all modules when an element is removed
+            dom.onElementRemoved('.context_module', module => {
+                // Only execute when module is selected
+                if (selectedModule === null || module.id.match(/^context_module_new$/) !== null) return;
+
+                showAllModules();
+            });
+
             modules.addEventListener('click', event => {
                 if (!event.target.classList.contains(styles.selectModule)) return;
 
