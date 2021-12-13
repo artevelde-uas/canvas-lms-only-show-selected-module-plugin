@@ -11,12 +11,12 @@
       &.selected {
         display: revert !important;
         border-bottom-style: none;
+      }
 
-        & > :global(.sortable-handle) {
+      & :global(.header > .sortable-handle) {
           display: none;
         }
       }
-    }
 
     & > :global(#context_module_new) {
       display: none !important;
