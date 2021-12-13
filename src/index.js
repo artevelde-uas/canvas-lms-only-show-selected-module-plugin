@@ -147,7 +147,7 @@ export default function () {
                         filter: ['id']
                     });
                 }
-            });
+            }, { root: modules });
 
             // Show all modules when an element is removed
             dom.onElementRemoved('.context_module', module => {
