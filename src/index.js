@@ -72,6 +72,13 @@ export default function () {
                 viewNextButton.toggleAttribute('disabled', (nextModule === null));
                 viewAllButton.toggleAttribute('disabled', (previousModule === null && nextModule === null));
 
+                // Expand module when selected
+                if (selectedModule.classList.contains('collapsed_module')) {
+                    const expandModuleLink = selectedModule.querySelector('.expand_module_link');
+
+                    expandModuleLink.click();
+                }
+
                 // Disable the 'Expand/Collapse All' button
                 if (expandCollapseAllButton !== null) {
                     expandCollapseAllButton.classList.toggle('disabled', true);
