@@ -88,6 +88,14 @@ export default function () {
             function showAllModules() {
                 modules.classList.remove(styles.selected);
 
+                // Hide the previously selected module
+                if (selectedModule !== null) {
+                    selectedModule.classList.remove(styles.selected);
+                }
+
+                // Unset the selected module
+                selectedModule = null;
+
                 // Remove the module ID from the URL
                 window.history.replaceState(null, null, location.pathname.replace(/\/modules\/\d+$/, '/modules'));
 
