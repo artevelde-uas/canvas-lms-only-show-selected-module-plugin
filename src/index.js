@@ -60,7 +60,7 @@ export default function () {
 
                 // Replace the module ID in the URL with the new one
                 const moduleId = contextModuleId.replace(/^context_module_/, '');
-                const url = location.pathname.replace(/\/modules(\/\d+)?$/, '/modules/' + moduleId);
+                const url = location.pathname.replace(/\/modules(\/\d+)?\/?$/, '/modules/' + moduleId);
 
                 window.history.replaceState(null, null, url);
 
@@ -97,7 +97,9 @@ export default function () {
                 selectedModule = null;
 
                 // Remove the module ID from the URL
-                window.history.replaceState(null, null, location.pathname.replace(/\/modules\/\d+$/, '/modules'));
+                const url = location.pathname.replace(/\/modules(\/\d+)?\/?$/, '/modules');
+
+                window.history.replaceState(null, null, url);
 
                 // Disable the module buttons
                 viewPreviousButton.toggleAttribute('disabled', true);
