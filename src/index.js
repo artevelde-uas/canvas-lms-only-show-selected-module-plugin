@@ -183,21 +183,15 @@ export default function () {
                 setSelectedModule('context_module_' + moduleId);
 
                 // Keep scrolling window to top to override Canvas' behavior
-                const intervalID = setInterval(window.scrollTo, 100, 0, 0);
-
-                /**
-                 * Clear the scroll to top interval
-                 */
-                function clear() {
-                    clearInterval(intervalID);
-                }
-
+                const scrollToTopID = setInterval(window.scrollTo, 100, 0, 0);
+                const clearScrollToTop = clearInterval.bind(null, scrollToTopID);
+                
                 // Stop scrolling to top after ten seconds
-                setTimeout(clear, 10000);
+                setTimeout(clearScrollToTop, 10000);
 
                 // Stop scrolling to top on first wheel, touch or key event
                 ['wheel', 'keydown', 'touchstart'].forEach(function (name) {
-                    window.addEventListener(name, clear, { capture: true, once: true });
+                    window.addEventListener(name, clearScrollToTop, { capture: true, once: true });
                 });
 
                 // Stop scrolling to top on first mousedown on vertical scrollbar
