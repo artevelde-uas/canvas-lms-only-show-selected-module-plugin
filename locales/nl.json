@@ -8,8 +8,8 @@
         "description": [
             "Bij het navigeren naar een specifieke module, zal alleen de",
             "geselecteerde module getoond worden. Knoppen voor Vorige/Volgende",
-            "worden ook voorzien om te kunnen navigren tussen modules.",
-            "Een knop om alle modules wordt ook toegevoegd."
+            "worden voorzien om te kunnen navigeren tussen modules.",
+            "Een knop om alle modules weer te geven wordt ook toegevoegd."
         ]
     }
 }
