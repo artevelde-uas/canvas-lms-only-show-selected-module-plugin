@@ -134,10 +134,18 @@ export default function () {
                 // Add 'Only show this module' link
                 module.querySelectorAll('.ig-header-title').forEach(title => {
                     title.insertAdjacentHTML('beforeend', `
-                        <a class="${styles.selectModule}">
-                            [${__('only_show_this_module')}]
+                        &nbsp;
+                        <a class="${styles.selectModule}" title="${__('focus_on_module')}">
+                            <i role="presentation" class="icon-eye"></i>
                         </a>
                     `);
+                });
+
+                module.querySelectorAll(`.${styles.selectModule}`).forEach(link => {
+                    jQuery(link).tooltip({
+                        position: { my: 'left+12', at: 'right' },
+                        tooltipClass: 'left middle horizontal'
+                    });
                 });
 
                 // Detect if a new module was created

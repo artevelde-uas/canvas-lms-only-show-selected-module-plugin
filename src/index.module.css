@@ -53,8 +53,7 @@
     /* Hide the 'Only show this module' button ... */
     & :local(.select-module) {
       display: none;
-      line-height: 0;
-      font-size: 0.75em;
+      color: var(--ic-brand-font-color-dark);
     }
 
     /* ... and show when header is hovered */
