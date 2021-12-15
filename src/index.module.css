@@ -3,62 +3,60 @@
 #view-all-modules {
 }
 
-:global :local(.only-show-selected-module) {
-  & #context_modules {
-    &:local(.selected) > .context_module {
-      /* Hide other modules when one is selected */
-      display: none !important;
+:global :local(.only-show-selected-module) #context_modules {
+  &:local(.selected) > .context_module {
+    /* Hide other modules when one is selected */
+    display: none !important;
 
-      &:local(.selected) {
-        /* Only show selected module */
-        display: revert !important;
-        border-bottom-style: none;
-      }
-
-      /* Remove sortable handle when module is selected */
-      & .header > .sortable-handle {
-        display: none;
-      }
-
-      /* Only show collapse link */
-      & .collapse_module_link {
-        display: revert !important;
-        cursor: initial;
-
-        /* Hide collapse icon */
-        & > i.icon-mini-arrow-down {
-          visibility: hidden !important;
-        }
-      }
-
-      /* Hide expand link */
-      & .expand_module_link {
-        display: none !important;
-      }
-
-      /* Force show collapsed content */
-      & > .content {
-        display: revert !important;
-        height: revert !important;
-        overflow: revert !important;
-        margin-top: 0px !important;
-      }
+    &:local(.selected) {
+      /* Only show selected module */
+      display: revert !important;
+      border-bottom-style: none;
     }
 
-    /* Don't show new modules when still empty */
-    & > #context_module_new {
-      display: none !important;
-    }
-
-    /* Hide the 'Only show this module' button ... */
-    & :local(.select-module) {
+    /* Remove sortable handle when module is selected */
+    & .header > .sortable-handle {
       display: none;
-      color: var(--ic-brand-font-color-dark);
     }
 
-    /* ... and show when header is hovered */
-    &:not(:local(.selected)) .ig-header:hover :local(.select-module) {
-      display: revert;
+    /* Only show collapse link */
+    & .collapse_module_link {
+      display: revert !important;
+      cursor: initial;
+
+      /* Hide collapse icon */
+      & > i.icon-mini-arrow-down {
+        visibility: hidden !important;
+      }
     }
+
+    /* Hide expand link */
+    & .expand_module_link {
+      display: none !important;
+    }
+
+    /* Force show collapsed content */
+    & > .content {
+      display: revert !important;
+      height: revert !important;
+      overflow: revert !important;
+      margin-top: 0px !important;
+    }
+  }
+
+  /* Don't show new modules when still empty */
+  & > #context_module_new {
+    display: none !important;
+  }
+
+  /* Hide the 'Only show this module' button ... */
+  & :local(.select-module) {
+    display: none;
+    color: var(--ic-brand-font-color-dark);
+  }
+
+  /* ... and show when header is hovered */
+  &:not(:local(.selected)) .ig-header:hover :local(.select-module) {
+    display: revert;
   }
 }
