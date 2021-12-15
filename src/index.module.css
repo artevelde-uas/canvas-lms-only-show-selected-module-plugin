@@ -3,38 +3,38 @@
 #view-all-modules {
 }
 
-.only-show-selected-module {
-  & :global(#context_modules) {
-    &.selected > :global(.context_module) {
+:global :local(.only-show-selected-module) {
+  & #context_modules {
+    &:local(.selected) > .context_module {
       /* Hide other modules when one is selected */
       display: none !important;
 
-      &.selected {
+      &:local(.selected) {
         /* Only show selected module */
         display: revert !important;
         border-bottom-style: none;
       }
 
       /* Remove sortable handle when module is selected */
-      & :global(.header > .sortable-handle) {
+      & .header > .sortable-handle {
         display: none;
       }
     }
 
     /* Don't show new modules when still empty */
-    & > :global(#context_module_new) {
+    & > #context_module_new {
       display: none !important;
     }
 
     /* Hide the 'Only show this module' button ... */
-    & .select-module {
+    & :local(.select-module) {
       display: none;
       line-height: 0;
       font-size: 0.75em;
     }
 
     /* ... and show when header is hovered */
-    &:not(.selected) :global(.ig-header):hover .select-module {
+    &:not(:local(.selected)) .ig-header:hover :local(.select-module) {
       display: revert;
     }
   }
