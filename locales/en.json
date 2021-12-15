@@ -4,7 +4,11 @@
     "view_all_modules": "View All Modules",
     "focus_on_module": "Focus on this module",
     "package": {
-        "title": "Only show selected module",
-        "description": "When linking to a specific module, only the selected module will be shown. Previous/Next buttons are also added to move between modules. A button to show all modules is added as well."
+        "title": "Focus on selected module",
+        "description": [
+            "When linking to a specific module, only the selected module will",
+            "be shown. Previous/Next buttons are also added to move between",
+            "modules. A button to show all modules is added as well."
+        ]
     }
 }
