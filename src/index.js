@@ -79,9 +79,9 @@ export default function () {
                     expandModuleLink.click();
                 }
 
-                // Disable the 'Expand/Collapse All' button
+                // Hide the 'Expand/Collapse All' button
                 if (expandCollapseAllButton !== null) {
-                    expandCollapseAllButton.classList.add('disabled');
+                    expandCollapseAllButton.classList.add('hidden');
                 }
             }
 
@@ -107,9 +107,9 @@ export default function () {
                 viewNextButton.toggleAttribute('disabled', true);
                 viewAllButton.toggleAttribute('disabled', true);
 
-                // Re-enable the 'Expand/Collapse All' button
+                // Unhide the 'Expand/Collapse All' button
                 if (expandCollapseAllButton !== null) {
-                    expandCollapseAllButton.classList.remove('disabled');
+                    expandCollapseAllButton.classList.remove('hidden');
                 }
             }
 
@@ -158,9 +158,10 @@ export default function () {
                 showAllModules();
             });
 
+            // Add an 'Only show this module' link to each module
             modules.addEventListener('click', event => {
                 // Only detect clicks on 'Only show this module' links
-                if (!event.target.classList.contains(styles.selectModule)) return;
+                if (event.target.closest(`.${styles.selectModule}`) === null) return;
 
                 // Prevent module collapse
                 event.stopPropagation();
@@ -170,6 +171,14 @@ export default function () {
 
                 // Set clicked module as 'selected'
                 setSelectedModule(moduleId);
+            }, { capture: true });
+
+            // Prevent expand/collapse when a module is selected
+            modules.addEventListener('click', event => {
+                // 
+                if (selectedModule === null || event.target.closest('.collapse_module_link') === null) return;
+
+                event.stopPropagation();
             }, { capture: true });
 
             // If a hash is in the URL then this is the first run and some initialization needs to be done

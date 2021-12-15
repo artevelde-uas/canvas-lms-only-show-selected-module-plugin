@@ -19,6 +19,30 @@
       & .header > .sortable-handle {
         display: none;
       }
+
+      /* Only show collapse link */
+      & .collapse_module_link {
+        display: revert !important;
+        cursor: initial;
+
+        /* Hide collapse icon */
+        & > i.icon-mini-arrow-down {
+          visibility: hidden !important;
+        }
+      }
+
+      /* Hide expand link */
+      & .expand_module_link {
+        display: none !important;
+      }
+
+      /* Force show collapsed content */
+      & > .content {
+        display: revert !important;
+        height: revert !important;
+        overflow: revert !important;
+        margin-top: 0px !important;
+      }
     }
 
     /* Don't show new modules when still empty */
