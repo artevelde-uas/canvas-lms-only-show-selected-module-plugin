@@ -1,5 +1,6 @@
 {
     "previous": "Précédent",
     "next": "Suivant",
-    "view_all_modules": "Afficher tous les modules"
+    "view_all_modules": "Afficher tous les modules",
+    "focus_on_module": "Focus sur ce module"
 }

@@ -1,5 +1,6 @@
 {
     "previous": "前へ",
     "next": "次へ",
-    "view_all_modules": "すべてのモジュールを表示"
+    "view_all_modules": "すべてのモジュールを表示",
+    "focus_on_module": "このモジュールに焦点を当てる"
 }
