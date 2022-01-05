@@ -26,7 +26,6 @@ export default function () {
 
             const leftButtonBar = header.querySelector('.header-bar-left__buttons')
             const expandCollapseAllButton = document.getElementById('expand_collapse_all');
-            const addButton = document.querySelector('.header-bar .add_module_link');
 
             // Append the module buttons
             leftButtonBar.insertAdjacentHTML('beforeend', `
