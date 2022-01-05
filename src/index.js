@@ -13,7 +13,7 @@ export default function () {
             '#content > .header-bar',
             '#context_modules'
         ]).then(([header, modules]) => {
-            var selectedModule = null;
+            let selectedModule = null;
 
             // Inject the left button container if it does not exist yet
             if (header.querySelector('.header-bar-left') === null) {
