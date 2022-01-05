@@ -182,7 +182,7 @@ export default function () {
 
             // Prevent expand/collapse when a module is selected
             modules.addEventListener('click', event => {
-                // 
+                // Only detect clicks on 'Collapse module' links
                 if (selectedModule === null || event.target.closest('.collapse_module_link') === null) return;
 
                 event.stopPropagation();
