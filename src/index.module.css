@@ -3,13 +3,13 @@
 #view-all-modules {
 }
 
-:global :local(.only-show-selected-module) #context_modules {
+:global :local(body.only-show-selected-module) #context_modules {
   &:local(.selected) > .context_module {
     /* Hide other modules when one is selected */
     display: none !important;
 
+    /* Only show selected module */
     &:local(.selected) {
-      /* Only show selected module */
       display: revert !important;
       border-bottom-style: none;
     }
@@ -49,7 +49,7 @@
     display: none !important;
   }
 
-  /* Hide the 'Only show this module' button ... */
+  /* Hide the 'Fucus on this module' button ... */
   & :local(.select-module) {
     display: none;
     color: var(--ic-brand-font-color-dark);
