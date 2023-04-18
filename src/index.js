@@ -19,31 +19,31 @@ export default function () {
         // Inject the left button container if it does not exist yet
         if (header.querySelector('.header-bar-left') === null) {
             header.insertAdjacentHTML('afterbegin', `
-                    <div class="header-bar-left header-bar__module-layout">
-                        <div class="header-bar-left__buttons"></div>
-                    </div>
-                `);
+                <div class="header-bar-left header-bar__module-layout">
+                    <div class="header-bar-left__buttons"></div>
+                </div>
+            `);
         }
 
-        const leftButtonBar = header.querySelector('.header-bar-left__buttons')
+        const leftButtonBar = header.querySelector('.header-bar-left__buttons');
         const expandCollapseAllButton = document.getElementById('expand_collapse_all');
 
         // Append the module buttons
         leftButtonBar.insertAdjacentHTML('beforeend', `
-                <a id="${styles.viewPreviousModule}" class="btn" disabled>
-                    <i class="icon-mini-arrow-left"></i>
-                    ${__('previous')}
-                    </a>
-                    <a id="${styles.viewNextModule}" class="btn" disabled>
-                    ${__('next')}
-                    <i class="icon-mini-arrow-right"></i>
-                </a>
-                <a id="${styles.viewAllModules}" class="btn" disabled>${__('view_all_modules')}</a>
-            `);
+            <a id="${styles.viewPreviousModule}" class="btn" disabled>
+                <i class="icon-mini-arrow-left"></i>
+                ${__('previous')}
+            </a>
+            <a id="${styles.viewNextModule}" class="btn" disabled>
+                ${__('next')}
+                <i class="icon-mini-arrow-right"></i>
+            </a>
+            <a id="${styles.viewAllModules}" class="btn" disabled>${__('view_all_modules')}</a>
+        `);
 
-        const viewPreviousButton = document.getElementById(styles.viewPreviousModule)
-        const viewNextButton = document.getElementById(styles.viewNextModule)
-        const viewAllButton = document.getElementById(styles.viewAllModules)
+        const viewPreviousButton = document.getElementById(styles.viewPreviousModule);
+        const viewNextButton = document.getElementById(styles.viewNextModule);
+        const viewAllButton = document.getElementById(styles.viewAllModules);
 
         function setSelectedModule(contextModuleId) {
             // Hide the previously selected module
