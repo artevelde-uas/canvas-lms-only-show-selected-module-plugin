@@ -1,5 +1,5 @@
 import { router, dom } from '@artevelde-uas/canvas-lms-app';
-import __ from './i18n';
+import t from './i18n';
 
 import styles from './index.module.css';
 
@@ -32,13 +32,13 @@ export default function () {
         leftButtonBar.insertAdjacentHTML('beforeend', `
             <a id="${styles.viewPreviousModule}" class="btn" disabled>
                 <i class="icon-mini-arrow-left"></i>
-                ${__('previous')}
+                ${t('previous')}
             </a>
             <a id="${styles.viewNextModule}" class="btn" disabled>
-                ${__('next')}
+                ${t('next')}
                 <i class="icon-mini-arrow-right"></i>
             </a>
-            <a id="${styles.viewAllModules}" class="btn" disabled>${__('view_all_modules')}</a>
+            <a id="${styles.viewAllModules}" class="btn" disabled>${t('view_all_modules')}</a>
         `);
 
         const viewPreviousButton = document.getElementById(styles.viewPreviousModule);
@@ -135,7 +135,7 @@ export default function () {
             module.querySelectorAll('.ig-header-title').forEach(title => {
                 title.insertAdjacentHTML('beforeend', `
                         &nbsp;
-                        <a class="${styles.selectModule}" title="${__('focus_on_module')}">
+                        <a class="${styles.selectModule}" title="${t('focus_on_module')}">
                             <i role="presentation" class="icon-eye"></i>
                         </a>
                     `);
@@ -223,7 +223,7 @@ export default function () {
 
     return {
         ...require('../package.json'),
-        title: __('package.title'),
-        description: __('package.description')
+        title: t('package.title'),
+        description: t('package.description')
     };
 }
